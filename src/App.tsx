@@ -49,7 +49,7 @@ function App() {
     });
   }, [setScenes]);
 
-  const sendSceneCmd = async (entity_id: string) => {
+  const sendSceneCmd = async (entity_id: string, transition: number) => {
     await axios({
       method: 'post',
       url: 'http://raspi.local:8123/api/services/scene/turn_on',
@@ -59,7 +59,7 @@ function App() {
       },
       data: {
         entity_id,
-        transition: 1
+        transition
       }
     });
   }
@@ -70,7 +70,7 @@ function App() {
         {scenes.length > 0 && scenes.map(scene => (
           <button
             key={scene.id}
-            onClick={() => sendSceneCmd(scene.entity_id)}
+            onClick={() => sendSceneCmd(scene.entity_id, 2)}
             className='App-grid-scenebutton'
           >
             {scene.friendly_name}
