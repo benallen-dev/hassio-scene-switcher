@@ -43,7 +43,11 @@ function App() {
         return acc;
       }, []);
 
-      setScenes(filteredData);
+      const sortedData = filteredData.sort((a: SceneInfo, b: SceneInfo) => {
+        return a.friendly_name < b.friendly_name ? -1 : 1;
+      })
+
+      setScenes(sortedData);
     }).catch((err) => {
       console.error(err);
     });

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap');
+
 .App {
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
@@ -18,4 +20,9 @@
 .App-grid-scenebutton {
   width: 100%;
   min-height: 40px;
+
+  font-family: 'Exo 2';
+  font-weight: 600;
+  font-size: calc(3vw + 3vh + 2vmin);
+
 }
