@@ -3,6 +3,8 @@ import './App.css';
 
 import axios from 'axios';
 
+const bearerToken = '';
+
 // This is an interface because it's only a partial definition of a datum, but it's all the bits I need
 interface Datum {
   entity_id: string;
@@ -28,7 +30,7 @@ function App() {
       url: 'http://raspi.local:8123/api/states',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxZmJiMjI1NTYzMmM0ODA5OWU5Y2VmZjUyNzY0NTZmMSIsImlhdCI6MTYyNzMwMTA4OSwiZXhwIjoxOTQyNjYxMDg5fQ.2lJ3lxP90WMUKoc6RZtTSyG864_b8WMOiocSeKHZHYg',
+        Authorization: bearerToken
       }
     }).then(result => {
       const filteredData = result.data.reduce((acc: SceneInfo[], datum: Datum) => {
@@ -59,7 +61,7 @@ function App() {
       url: 'http://raspi.local:8123/api/services/scene/turn_on',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxZmJiMjI1NTYzMmM0ODA5OWU5Y2VmZjUyNzY0NTZmMSIsImlhdCI6MTYyNzMwMTA4OSwiZXhwIjoxOTQyNjYxMDg5fQ.2lJ3lxP90WMUKoc6RZtTSyG864_b8WMOiocSeKHZHYg',
+        Authorization: bearerToken
       },
       data: {
         entity_id,
