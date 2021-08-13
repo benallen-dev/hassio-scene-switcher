@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 
 const bearerToken = '';
+const hassioInstance = 'raspi.local:8123';
 
 // This is an interface because it's only a partial definition of a datum, but it's all the bits I need
 interface Datum {
@@ -27,7 +28,7 @@ function App() {
   React.useEffect(() => {
     axios({
       method: 'get',
-      url: 'http://raspi.local:8123/api/states',
+      url: `http://${hassioInstance}/api/states`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: bearerToken
@@ -58,7 +59,7 @@ function App() {
   const sendSceneCmd = async (entity_id: string, transition: number) => {
     await axios({
       method: 'post',
-      url: 'http://raspi.local:8123/api/services/scene/turn_on',
+      url: `http://${hassioInstance}/api/services/scene/turn_on`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: bearerToken
